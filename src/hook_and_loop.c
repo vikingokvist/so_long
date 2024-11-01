@@ -15,7 +15,7 @@
 void	hook_and_loop(t_data data)
 {
 	mlx_hook(data.window, KeyRelease, KeyReleaseMask, &on_keypress, &data);
-	mlx_hook(data.window, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
+	mlx_hook(data.window, DestroyNotify, StructureNotifyMask,
+		&on_destroy, &data);
 	mlx_loop(data.mlx_ptr);
 }
-

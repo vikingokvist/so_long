@@ -15,7 +15,7 @@
 int	main(void)
 {
 	t_data	data;
-	
+
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
@@ -25,7 +25,5 @@ int	main(void)
 	if (render_background(&data))
 		return (free_data(&data), 1);
 	hook_and_loop(data);
-	
-
 	return (free_data(&data), 0);
 }

@@ -21,6 +21,5 @@ int	on_keypress(int keysym, t_data *data)
 		free_data(data);
 		exit(1);
 	}
-		
 	return (0);
 }
