@@ -15,6 +15,12 @@
 int	on_keypress(int keysym, t_data *data)
 {
 	(void)data;
-	ft_printf("Pressed Key: %d\n", keysym);
+	ft_printf("Pressed Key: %c\n", keysym);
+	if (keysym == XK_Escape)
+	{
+		free_data(data);
+		exit(1);
+	}
+		
 	return (0);
 }

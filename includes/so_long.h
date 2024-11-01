@@ -19,14 +19,22 @@
 # include <X11/keysym.h>
 # include <stdlib.h>
 
+# define BACKGROUND "../so_long_git/textures/background.xpm"
+
 typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*window;
+	void	*img;
+	int	img_h;
+	int	img_w;
 }	t_data;
 
 int		main(void);
 int		on_destroy(t_data *data);
-int	on_keypress(int keysym, t_data *data);
+int		on_keypress(int keysym, t_data *data);
+int		render_background(t_data *data);
+void	hook_and_loop(t_data data);
+void	free_data(t_data *data);
 
 #endif

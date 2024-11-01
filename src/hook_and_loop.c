@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy.c                                          :+:      :+:    :+:   */
+/*   hook_and_loop.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctommasi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 12:01:51 by ctommasi          #+#    #+#             */
-/*   Updated: 2024/11/01 12:01:53 by ctommasi         ###   ########.fr       */
+/*   Created: 2024/11/01 18:03:26 by ctommasi          #+#    #+#             */
+/*   Updated: 2024/11/01 18:03:27 by ctommasi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	on_destroy(t_data *data)
+void	hook_and_loop(t_data data)
 {
-	free_data(data);
-	exit(0);
+	mlx_hook(data.window, KeyRelease, KeyReleaseMask, &on_keypress, &data);
+	mlx_hook(data.window, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
+	mlx_loop(data.mlx_ptr);
 }
+

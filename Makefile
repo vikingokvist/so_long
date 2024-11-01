@@ -24,7 +24,9 @@ LIBFT = $(LIBFT_DIR)/libft.a
 MINILIB_DIR = minilibx-linux
 MINILIB = $(MINILIB_DIR)/libmlx.a
 
-SRCS_SRC = src/main.c src/keypress.c src/destroy.c
+SRCS_SRC = src/main.c src/keypress.c src/destroy.c src/free_data.c \
+	src/render_background.c src/hook_and_loop.c
+
 OBJS_SRC = $(SRCS_SRC:.c=.o)
 
 ORANGE = \033[38;5;214m

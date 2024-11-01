@@ -19,11 +19,13 @@ int	main(void)
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
-	data.window = mlx_new_window(data.mlx_ptr, 600, 400, "so_long");
+	data.window = mlx_new_window(data.mlx_ptr, 1024, 768, "so_long");
 	if (!data.window)
 		return (free(data.mlx_ptr), 1);
-	mlx_hook(data.window, KeyRelease, KeyReleaseMask, &on_keypress, &data);
-	mlx_hook(data.window, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
-	mlx_loop(data.mlx_ptr);
-	return (0);
+	if (render_background(&data))
+		return (free_data(&data), 1);
+	hook_and_loop(data);
+	
+
+	return (free_data(&data), 0);
 }
