@@ -13,28 +13,30 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../minilibx-linux/mlx.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/includes/libft.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
 # include <stdlib.h>
 
-# define BACKGROUND "../so_long_git/textures/background.xpm"
+# define BACKGROUND_IMAGE "../so_long_git/textures/background.xpm"
+# define WINDOW_WIDTH 1024
+# define WINDOW_HEIGHT 768
+# define WINDOW_TITLE "so_long"
 
 typedef struct s_data
 {
-	void	*mlx_ptr;
-	void	*window;
-	void	*img;
+	mlx_t	*mlx_ptr;
+	mlx_image_t	*img;
 	int	img_h;
 	int	img_w;
 }	t_data;
 
 int		main(void);
-int		on_destroy(t_data *data);
-int		on_keypress(int keysym, t_data *data);
+int		init_window(t_data *data);
 int		render_background(t_data *data);
-void	hook_and_loop(t_data data);
+void	on_keypress(struct mlx_key_data keydata, void *param);
+void	hook_and_loop(t_data *data);
 void	free_data(t_data *data);
+void	on_destroy(void *data);
+
 
 #endif

@@ -12,14 +12,15 @@
 
 #include "../includes/so_long.h"
 
-int	on_keypress(int keysym, t_data *data)
+void	on_keypress(struct mlx_key_data keydata, void *param)
 {
-	(void)data;
-	ft_printf("Pressed Key: %c\n", keysym);
-	if (keysym == XK_Escape)
+	t_data	*data;
+
+	data = (t_data *)param;
+	ft_printf("Pressed Key: %c\n", keydata.key);
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
 		free_data(data);
-		exit(1);
+		exit(0);
 	}
-	return (0);
 }

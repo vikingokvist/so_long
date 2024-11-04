@@ -12,8 +12,11 @@
 
 #include "../includes/so_long.h"
 
-int	on_destroy(t_data *data)
+void	on_destroy(void *param)
 {
+	t_data	*data;
+
+	data = (t_data *)param;
 	free_data(data);
 	exit(0);
 }

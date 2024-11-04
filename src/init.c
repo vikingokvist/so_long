@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook_and_loop.c                                    :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctommasi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 18:03:26 by ctommasi          #+#    #+#             */
-/*   Updated: 2024/11/01 18:03:27 by ctommasi         ###   ########.fr       */
+/*   Created: 2024/11/04 10:25:07 by ctommasi          #+#    #+#             */
+/*   Updated: 2024/11/04 10:25:09 by ctommasi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	hook_and_loop(t_data *data)
+int	init_window(t_data *data)
 {
-	mlx_key_hook(data->mlx_ptr, on_keypress, data);
-	mlx_close_hook(data->mlx_ptr, on_destroy, data);
-	mlx_loop(data->mlx_ptr);
+	data->mlx_ptr = mlx_init(800, 600, "so_long", true);
+	if (!data->mlx_ptr)
+		return (ft_printf("failed to initialise MLX"), 1);
+	data->img = NULL;
+	return (0);
 }
+

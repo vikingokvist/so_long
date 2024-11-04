@@ -16,15 +16,12 @@ void	free_data(t_data *data)
 {
 	if (data->img)
 	{
-		mlx_destroy_image(data->mlx_ptr, data->img);
+		mlx_delete_image(data->mlx_ptr, data->img);
 		data->img = NULL;
 	}
-	if (data->window)
+	if (data->mlx_ptr)
 	{
-		mlx_destroy_window(data->mlx_ptr, data->window);
-		data->window = NULL;
+		mlx_terminate(data->mlx_ptr);
+		data->mlx_ptr = NULL;
 	}
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
-	data->mlx_ptr = NULL;
 }

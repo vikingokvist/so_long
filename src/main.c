@@ -15,15 +15,11 @@
 int	main(void)
 {
 	t_data	data;
-
-	data.mlx_ptr = mlx_init();
-	if (!data.mlx_ptr)
+	
+	if (init_window(&data))
 		return (1);
-	data.window = mlx_new_window(data.mlx_ptr, 1024, 768, "so_long");
-	if (!data.window)
-		return (free(data.mlx_ptr), 1);
 	if (render_background(&data))
-		return (free_data(&data), 1);
-	hook_and_loop(data);
+		return (1);
+	hook_and_loop(&data);
 	return (free_data(&data), 0);
 }

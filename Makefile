@@ -14,18 +14,18 @@ NAME = so_long
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-MLX_FLAGS = -Lminilibx-linux -lmlx -L/usr/lib/X11 -lXext -lX11
+MLX_FLAGS = -I ./MLX42/include
 RM = rm -f
-
-INCLUDE_DIR = -I/usr/include -Iminilibx-linux -Ilibft
+NO_PRINT = --no-print-directory
 
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-MINILIB_DIR = minilibx-linux
-MINILIB = $(MINILIB_DIR)/libmlx.a
 
-SRCS_SRC = src/main.c src/keypress.c src/destroy.c src/free_data.c \
-	src/render_background.c src/hook_and_loop.c
+MINILIB_DIR = MLX42/build
+MINILIB = $(MINILIB_DIR)/libmlx42.a -ldl -lglfw -pthread -lm
+
+SRCS_SRC = src/main.c src/init.c src/hook_and_loop.c src/keypress.c \
+	src/destroy.c src/free_data.c src/render_background.c 
 
 OBJS_SRC = $(SRCS_SRC:.c=.o)
 
@@ -38,14 +38,14 @@ RESET = \033[0m
 #----------------------------------------------------------------------
 all: $(NAME)
 
-$(NAME): $(OBJS_SRC) $(LIBFT) $(MINILIB)
+$(NAME): $(OBJS_SRC) $(LIBFT)
 	@echo "$(ORANGE)Linking...$(RESET)"
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS_SRC) $(MLX_FLAGS) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJS_SRC) $(MINILIB) $(LIBFT) -o $(NAME) 
 	@echo "$(GREEN)Executable built: $(NAME)$(RESET)"
 
 %.o: %.c
 	@echo "$(ORANGE)Compiling $<...$(RESET)"
-	@$(CC) $(CFLAGS) $(INCLUDE_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) $(MLX_FLAGS) -c $< -o $@
 
 clean:
 	@$(RM) $(OBJS_SRC)
@@ -62,14 +62,14 @@ libft: $(LIBFT)
 
 $(LIBFT):
 	@echo "$(ORANGE)Building libft...$(RESET)"
-	@make --no-print-directory -C $(LIBFT_DIR)
+	@make $(NO_PRINT) -C $(LIBFT_DIR)
 
 clean_libft:
-	@make --no-print-directory -C $(LIBFT_DIR) clean
+	@make $(NO_PRINT) -C $(LIBFT_DIR) clean
 	@echo "$(GREEN)Libft cleaned.$(RESET)"
 
 fclean_libft:
-	@make --no-print-directory -C $(LIBFT_DIR) fclean
+	@make $(NO_PRINT) -C $(LIBFT_DIR) fclean
 	@echo "$(GREEN)Libft executable removed.$(RESET)"
 
 #----------------------------------------------------------------------
@@ -79,20 +79,18 @@ minilib: $(MINILIB)
 
 $(MINILIB):
 	@echo "$(ORANGE)Building minilibx...$(RESET)"
-	@make --no-print-directory -C minilibx-linux
+	@cmake -B $(MINILIB_DIR) -S MLX42 && make -C $(MINILIB_DIR)
 
 clean_minilib:
-	@make --no-print-directory -C minilibx-linux clean || true
+	@make -C $(MINILIB_DIR) clean || true
 	@echo "$(GREEN)Minilibx cleaned.$(RESET)"
 
 fclean_minilib:
-	@make --no-print-directory -C minilibx-linux clean || true
+	@make -C $(MINILIB_DIR) clean || true
 	@echo "$(GREEN)Minilibx executable removed.$(RESET)"
 
 #----------------------------------------------------------------------
 #----------------------------------------------------------------------
-
-$(NAME): $(LIBFT) $(MINILIB)
 
 re: fclean all
 
