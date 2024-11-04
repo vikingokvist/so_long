@@ -17,7 +17,7 @@ int	render_background(t_data *data)
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
 
-	texture = mlx_load_png("./textures/background.png");
+	texture = mlx_load_png("./textures/texture1.png");
 	if (!texture)
 		return (free_data(data), 1);
 	image = mlx_texture_to_image(data->mlx_ptr, texture);

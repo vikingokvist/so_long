@@ -14,11 +14,19 @@
 
 void	free_data(t_data *data)
 {
+	int	i;
+
+	i = 0;
+	if (data->map)
+	{
+		
+	}
 	if (data->img)
 	{
 		mlx_delete_image(data->mlx_ptr, data->img);
 		data->img = NULL;
 	}
+	
 	mlx_terminate(data->mlx_ptr);
 	data->mlx_ptr = NULL;
 }

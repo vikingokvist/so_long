@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctommasi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/31 17:05:56 by ctommasi          #+#    #+#             */
-/*   Updated: 2024/10/31 17:05:58 by ctommasi         ###   ########.fr       */
+/*   Created: 2024/11/04 10:25:07 by ctommasi          #+#    #+#             */
+/*   Updated: 2024/11/04 10:25:09 by ctommasi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	main(void)
+int	init_window(t_data *data)
 {
-	t_data	data;
-
-	if (init_window(&data))
+	data->window_w = 1600;
+	data->window_h = 600;
+	data->window_name = "so_long";
+	data->mlx_ptr = mlx_init(
+		data->window_w,
+		data->window_h,
+		data->window_name,
+		true);
+	if (!data->mlx_ptr)
 		return (1);
-	if (init_map(&data))
-		return (1);
-	if (render_background(&data))
-		return (1);
-	hook_and_loop(&data);
-	return (free_data(&data), 0);
+	data->img = NULL;
+	return (0);
 }
