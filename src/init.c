@@ -20,4 +20,3 @@ int	init_window(t_data *data)
 	data->img = NULL;
 	return (0);
 }
-

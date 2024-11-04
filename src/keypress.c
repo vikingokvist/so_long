@@ -21,6 +21,7 @@ void	on_keypress(struct mlx_key_data keydata, void *param)
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
 		free_data(data);
+		mlx_terminate(data->mlx_ptr);
 		exit(0);
 	}
 }

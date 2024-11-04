@@ -15,6 +15,5 @@
 void	hook_and_loop(t_data *data)
 {
 	mlx_key_hook(data->mlx_ptr, on_keypress, data);
-	mlx_close_hook(data->mlx_ptr, on_destroy, data);
 	mlx_loop(data->mlx_ptr);
 }

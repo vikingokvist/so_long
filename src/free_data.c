@@ -19,9 +19,6 @@ void	free_data(t_data *data)
 		mlx_delete_image(data->mlx_ptr, data->img);
 		data->img = NULL;
 	}
-	if (data->mlx_ptr)
-	{
-		mlx_terminate(data->mlx_ptr);
-		data->mlx_ptr = NULL;
-	}
+	mlx_terminate(data->mlx_ptr);
+	data->mlx_ptr = NULL;
 }
