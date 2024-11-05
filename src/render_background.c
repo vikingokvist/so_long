@@ -33,7 +33,7 @@ static mlx_texture_t	*get_texture(char c)
 static mlx_image_t	*get_image(t_data *data, char c)
 {
 	mlx_image_t		*image;
-	mlx_texture_t		*texture;
+	mlx_texture_t	*texture;
 
 	texture = get_texture(c);
 	if (!texture)
@@ -47,8 +47,8 @@ static mlx_image_t	*get_image(t_data *data, char c)
 
 int	render_background(t_data *data)
 {
-	int		x;
-	int		y;
+	int			x;
+	int			y;
 	mlx_image_t	*image;
 
 	y = 0;
@@ -60,23 +60,10 @@ int	render_background(t_data *data)
 			image = get_image(data, data->map[y][x]);
 			if (!image)
 				return (free_data(data), 1);
-			mlx_image_to_window(data->mlx_ptr, image, x * 64 + 1, y *  64);
+			mlx_image_to_window(data->mlx_ptr, image, (x * 64) + 1, y * 64);
 			x++;
 		}
 		y++;
 	}
 	return (0);
 }
-/*
-	mlx_texture_t	*texture;
-	mlx_image_t		*image;
-
-	texture = mlx_load_png("./textures/texture1.png");
-	if (!texture)
-		return (free_data(data), 1);
-	image = mlx_texture_to_image(data->mlx_ptr, texture);
-	if (!image)
-		return (free_data(data), 1);
-	mlx_image_to_window(data->mlx_ptr, image, 0, 0);
-	return (0);
-*/
