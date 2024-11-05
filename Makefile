@@ -63,6 +63,7 @@ libft: $(LIBFT)
 $(LIBFT):
 	@echo "$(ORANGE)Building libft...$(RESET)"
 	@make $(NO_PRINT) -C $(LIBFT_DIR)
+	@echo "$(GREEN)Executable built: libft.a$(RESET)"
 
 clean_libft:
 	@make $(NO_PRINT) -C $(LIBFT_DIR) clean
@@ -70,7 +71,7 @@ clean_libft:
 
 fclean_libft:
 	@make $(NO_PRINT) -C $(LIBFT_DIR) fclean
-	@echo "$(GREEN)Libft executable removed.$(RESET)"
+	@echo "$(GREEN)libft.a executable removed.$(RESET)"
 
 #----------------------------------------------------------------------
 #			     MINILIB

@@ -17,11 +17,11 @@ int	main(void)
 	t_data	data;
 
 	if (init_map(&data))
-		return (1);
+		return (perror("init_map Error"), 1);
 	if (init_window(&data))
-		return (1);
+		return (perror("init_window Error"), 1);
 	if (render_background(&data))
-		return (1);
+		return (perror("render_background Error"), 1);
 	hook_and_loop(&data);
 	return (free_data(&data), 0);
 }

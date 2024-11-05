@@ -39,7 +39,7 @@ typedef struct s_data
 int		main(void);
 int		init_window(t_data *data);
 int		init_map(t_data *data);
-int		render_background(t_data *data);
+int	render_background(t_data *data);
 void	on_keypress(struct mlx_key_data keydata, void *param);
 void	hook_and_loop(t_data *data);
 void	free_data(t_data *data);
