@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   render_player.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctommasi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/31 17:05:56 by ctommasi          #+#    #+#             */
-/*   Updated: 2024/10/31 17:05:58 by ctommasi         ###   ########.fr       */
+/*   Created: 2024/11/05 17:22:13 by ctommasi          #+#    #+#             */
+/*   Updated: 2024/11/05 17:22:16 by ctommasi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	main(void)
+int	render_player(t_data *data)
 {
-	t_data	data;
-
-	if (init_map(&data))
-		return (1);
-	if (init_window(&data))
-		return (1);
-	if (render_background(&data))
-		return (1);
-	// if (render_player(&data))
-	// 	return (1);
-	hook_and_loop(&data);
-	return (free_data(&data), 0);
+	
 }

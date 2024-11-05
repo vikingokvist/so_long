@@ -57,7 +57,14 @@ static int	assign_to_map(t_data *data, char *line, int *i)
 	{
 		if (line[j] == '0' || line[j] == '1' || line[j] == 'C'
 			|| line[j] == 'E' || line[j] == 'P')
+		{
 			data->map[*i][j] = line[j];
+			if (line[j] == 'P')
+			{
+				data->player_row = *i;
+				data->player_col = j;
+			}
+		}
 		else
 			return (1);
 		j++;

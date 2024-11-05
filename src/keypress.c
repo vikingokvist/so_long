@@ -17,11 +17,30 @@ void	on_keypress(struct mlx_key_data keydata, void *param)
 	t_data	*data;
 
 	data = (t_data *)param;
-	ft_printf("Pressed Key: %c\n", keydata.key);
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	if (keydata.action == MLX_PRESS)
 	{
-		free_data(data);
-		mlx_terminate(data->mlx_ptr);
-		exit(0);
+		if (keydata.key == MLX_KEY_ESCAPE)
+		{
+			free_data(data);
+			exit(0);
+		}
+		// if (keydata.key == MLX_KEY_W)
+		// {
+		// 	exit(0);
+		// }
+		// if (keydata.key == MLX_KEY_S)
+		// {
+
+		// }
+		// if (keydata.key == MLX_KEY_A)
+		// {
+
+		// }
+		// if (keydata.key == MLX_KEY_D)
+		// {
+
+		// }
 	}
+	
+	
 }

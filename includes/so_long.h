@@ -34,6 +34,9 @@ typedef struct s_data
 	char	**map;
 	int	rows;
 	int	columns;
+	char	**player_pos;
+	int	player_row;
+	int	player_col;
 }	t_data;
 
 int		main(void);
