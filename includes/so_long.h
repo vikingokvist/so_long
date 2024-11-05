@@ -32,6 +32,8 @@ typedef struct s_data
 	int	image_w;
 	int	image_h;
 	char	**map;
+	int	rows;
+	int	columns;
 }	t_data;
 
 int		main(void);

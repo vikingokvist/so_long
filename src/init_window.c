@@ -18,10 +18,10 @@ int	init_window(t_data *data)
 	data->window_h = 600;
 	data->window_name = "so_long";
 	data->mlx_ptr = mlx_init(
-		data->window_w,
-		data->window_h,
-		data->window_name,
-		true);
+			data->window_w,
+			data->window_h,
+			data->window_name,
+			true);
 	if (!data->mlx_ptr)
 		return (1);
 	data->img = NULL;

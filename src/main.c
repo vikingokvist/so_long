@@ -16,9 +16,9 @@ int	main(void)
 {
 	t_data	data;
 
-	if (init_window(&data))
-		return (1);
 	if (init_map(&data))
+		return (1);
+	if (init_window(&data))
 		return (1);
 	if (render_background(&data))
 		return (1);
