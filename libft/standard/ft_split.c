@@ -22,7 +22,7 @@ static void	*ft_malloc(size_t size)
 	return (ptr);
 }
 
-static void	ft_free_all(char **res, size_t i)
+void	ft_free_all(char **res, size_t i)
 {
 	while (i > 0)
 	{
@@ -32,7 +32,7 @@ static void	ft_free_all(char **res, size_t i)
 	free(res);
 }
 
-static size_t	ft_array_len(char const *s, char c)
+size_t	ft_array_len(char const *s, char c)
 {
 	size_t	i;
 	size_t	len;

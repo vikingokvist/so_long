@@ -65,6 +65,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+void	ft_free_all(char **res, size_t i);
 
 //linked_lists
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -84,6 +85,7 @@ t_list	*ft_lstlast(t_list **stack_x);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstinit_index(t_list **stack_x);
 void	ft_lstfree(t_list **stack_x);
+size_t	ft_array_len(char const *s, char c);
 
 //get_next_line
 char	*get_next_line(int fd);

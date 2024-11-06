@@ -12,14 +12,29 @@
 
 #include "../includes/so_long.h"
 
+static	void	free_all(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
+
 static int	check_len(t_data *data, char *line)
 {
-	int	temp;
+	int		temp;
+	char	**line_split;
 
-	temp = ft_strlen(*ft_split(line, '\n'));
+	line_split = ft_split(line, '\n');
+	temp = ft_strlen(*line_split);
 	if (temp != data->columns)
-		return (1);
-	return (0);
+		return (free_all(line_split), 1);
+	return (free_all(line_split), 0);
 }
 
 static int	check_map_rectangle(t_data *data, char **argv)
@@ -27,6 +42,7 @@ static int	check_map_rectangle(t_data *data, char **argv)
 	int		fd;
 	int		i;
 	char	*line;
+	char	**array;
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
@@ -37,8 +53,10 @@ static int	check_map_rectangle(t_data *data, char **argv)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
+		array = ft_split(line, '\n');
 		if (i == 0)
-			data->columns = ft_strlen(*ft_split(line, '\n'));
+			data->columns = ft_strlen(*array);
+		free_all(array);
 		if (i != 0 && check_len(data, line))
 			return (free_map(line, &fd), 1);
 		free(line);
@@ -70,14 +88,14 @@ void	check_valid_map(t_data *data, char **argv)
 {
 	if (check_ber_file(argv))
 	{
-		check_error('B');
 		if (data)
 			free_data(data);
+		check_error('B');
 	}
 	else if (check_map_rectangle(data, argv))
 	{
-		check_error('R');
 		if (data)
 			free_data(data);
+		check_error('R');
 	}
 }

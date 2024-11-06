@@ -17,13 +17,10 @@ void	on_keypress(struct mlx_key_data keydata, void *param)
 	t_data	*data;
 
 	data = (t_data *)param;
-	if (keydata.action == MLX_PRESS)
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
-		if (keydata.key == MLX_KEY_ESCAPE)
-		{
-			free_data(data);
-			exit(0);
-		}
+		free_data(data);
+		exit(0);
 	}
 }
 // if (keydata.key == MLX_KEY_W)
