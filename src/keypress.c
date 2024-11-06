@@ -24,23 +24,6 @@ void	on_keypress(struct mlx_key_data keydata, void *param)
 			free_data(data);
 			exit(0);
 		}
-		// if (keydata.key == MLX_KEY_W)
-		// {
-		// 	exit(0);
-		// }
-		// if (keydata.key == MLX_KEY_S)
-		// {
-
-		// }
-		// if (keydata.key == MLX_KEY_A)
-		// {
-
-		// }
-		// if (keydata.key == MLX_KEY_D)
-		// {
-
-		// }
 	}
-	
-	
 }
+// if (keydata.key == MLX_KEY_W)

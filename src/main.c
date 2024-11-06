@@ -12,18 +12,19 @@
 
 #include "../includes/so_long.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_data	data;
 
-	if (init_map(&data))
+	if (argc != 2)
 		return (1);
+	check_valid_map(&data, argv);
+	init_map(&data, argv);
 	if (init_window(&data))
 		return (1);
 	if (render_background(&data))
 		return (1);
-	// if (render_player(&data))
-	// 	return (1);
 	hook_and_loop(&data);
-	return (free_data(&data), 0);
+	free_data(&data);
+	return (0);
 }
