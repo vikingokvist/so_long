@@ -88,14 +88,16 @@ void	check_valid_map(t_data *data, char **argv)
 {
 	if (check_ber_file(argv))
 	{
+		check_error('B');
 		if (data)
 			free_data(data);
-		check_error('B');
+		
 	}
 	else if (check_map_rectangle(data, argv))
 	{
+		check_error('R');
 		if (data)
 			free_data(data);
-		check_error('R');
+		
 	}
 }

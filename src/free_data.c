@@ -37,7 +37,6 @@ void	free_data(t_data *data)
 		mlx_terminate(data->mlx_ptr);
 		data->mlx_ptr = NULL;
 	}
-	mlx_close_window(data->mlx_ptr);
 }
 
 void	free_map(char *line, int *fd)
