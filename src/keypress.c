@@ -34,7 +34,7 @@ void	on_keypress(struct mlx_key_data keydata, void *param)
 	else if (keydata.key == MLX_KEY_D && data->map[data->p_row][data->p_col + 1] != '1'
 		&& keydata.action == MLX_PRESS)
 		data->p_col += 1;
-	render_to_window(data, data->p_row, data->p_col);
+	render_player(data, data->p_row, data->p_col);
 	data->moves++;
 	ft_printf("MOVES = %d\n", data->moves);
 }

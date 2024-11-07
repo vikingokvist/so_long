@@ -51,9 +51,10 @@ void	free_data(t_data *data)
 		mlx_terminate(data->mlx_ptr);
 		data->mlx_ptr = NULL;
 	}
+	exit(1);
 }
 
-void	free_map(char *line, int *fd)
+void	free_fd(char *line, int *fd)
 {
 	if (line)
 		free(line);
@@ -61,17 +62,21 @@ void	free_map(char *line, int *fd)
 		close(*fd);
 }
 
-void	check_error(char c)
+void	error(t_data *data, char c)
 {
 	perror("Error\n");
-	if (c == 'B')
+	if (c == 'A')
+		perror("Wrong amount of arguments.\nUsage: ./so_long *.ber");
+	else if (c == 'B')
 		perror("Incorrect .ber file extension.\n");
-	else if (c == 'R')
+	else if (c == 'D')
 		perror("Incorrect map dimensions.\n");
 	else if (c == 'W')
 		perror("Map not surrounded by walls.\n");
 	else if (c == 'O')
 		perror("Opening file.\n");
+	else if (c == 'M')
+		perror("Malloc.\n");
 	else if (c == 'I')
 		perror("Initialising map.\n");
 	else if (c == 'w')
@@ -80,5 +85,7 @@ void	check_error(char c)
 		perror("Rendering background.\n");
 	else if (c == 'P')
 		perror("Getting player position.\n");
-	exit(1);
+	else if (c == 'D')
+		perror("Map must contain only 1 exit 1 start.\n");
+	free_data(data);
 }

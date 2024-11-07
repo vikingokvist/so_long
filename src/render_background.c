@@ -59,10 +59,7 @@ void	render_background(t_data *data)
 		{
 			image = get_image(data, data->map[y][x]);
 			if (!image)
-			{
-				free_data(data);
-				check_error('r');
-			}
+				error(data, 'r');
 			mlx_image_to_window(data->mlx_ptr, image, (x * 64), y * 64);
 			x++;
 		}

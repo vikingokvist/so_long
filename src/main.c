@@ -17,13 +17,17 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	if (argc != 2)
-		return (1);
-	data.moves = 0;
-	check_valid_map(&data, argv);
-	init_map(&data, argv);
+		error(&data, 'A');
+	init_struct(&data);
+	check_ber_file(&data, argv);
+	check_map_rectangle(&data, argv);
+	read_map(&data, argv);
+	check_walls(&data);
+	check_map_dupes(&data);
+	// check_map_doable(&data);
 	init_window(&data);
 	render_background(&data);
-	render_player(&data);
+	get_player_pos(&data);
 	hook_and_loop(&data);
 	free_data(&data);
 	return (0);

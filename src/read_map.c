@@ -12,36 +12,7 @@
 
 #include "../includes/so_long.h"
 
-static int	check_map_walls(t_data *data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < data->rows - 1)
-	{
-		if (i == 0 || i == data->rows - 1)
-		{
-			j = 0;
-			while (j < data->columns)
-			{
-				if (data->map[i][j] != '1')
-					return (1);
-				j++;
-			}
-		}
-		else
-		{
-			if (data->map[i][0] != '1'
-				|| data->map[i][data->columns - 1] != '1')
-				return (1);
-		}
-		i++;
-	}
-	return (0);
-}
-
-static int	read_map(t_data *data, char **argv)
+void	read_map(t_data *data, char **argv)
 {
 	int		fd;
 	char	*line;
@@ -49,10 +20,10 @@ static int	read_map(t_data *data, char **argv)
 
 	data->pre_map = ft_strdup("");
 	if (!data->pre_map)
-		return (free_data(data), check_error('M'), 0);
+		return (error(data, 'M'));
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		return (free(data->pre_map), free_data(data), check_error('O'), 0);
+		error(data, 'O');
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
@@ -64,21 +35,5 @@ static int	read_map(t_data *data, char **argv)
 	}
 	data->map = ft_split(data->pre_map, '\n');
 	close(fd);
-	return (0);
 }
 
-void	init_map(t_data *data, char **argv)
-{
-	if (read_map(data, argv))
-	{
-		if (data)
-			free_data(data);
-		check_error('I');
-	}
-	if (check_map_walls(data))
-	{
-		if (data)
-			free(data);
-		check_error('W');
-	}
-}

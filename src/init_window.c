@@ -16,13 +16,9 @@ void	init_window(t_data *data)
 {
 	data->window_w = data->columns * 64;
 	data->window_h = data->rows * 64;
-	data->window_name = "so_long";
 	data->mlx_ptr = mlx_init(data->window_w, data->window_h,
 			data->window_name, false);
 	if (!data->mlx_ptr)
-	{
-		free_data(data);
-		check_error('w');
-	}
+		error(data, 'w');
 	data->img = NULL;
 }
