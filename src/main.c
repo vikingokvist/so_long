@@ -20,10 +20,9 @@ int	main(int argc, char **argv)
 		return (1);
 	check_valid_map(&data, argv);
 	init_map(&data, argv);
-	if (init_window(&data))
-		return (1);
-	if (render_background(&data))
-		return (1);
+	init_window(&data);
+	render_background(&data);
+	render_player(&data);
 	hook_and_loop(&data);
 	free_data(&data);
 	return (0);

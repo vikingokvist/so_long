@@ -18,7 +18,7 @@ static int	check_map_walls(t_data *data)
 	int	j;
 
 	i = 0;
-	while (i < data->rows)
+	while (i < data->rows - 1)
 	{
 		if (i == 0 || i == data->rows - 1)
 		{
@@ -41,71 +41,44 @@ static int	check_map_walls(t_data *data)
 	return (0);
 }
 
-static int	assign_to_map(t_data *data, char *line, int *i)
-{
-	int	j;
-
-	data->map[*i] = malloc(sizeof(char) * data->columns);
-	if (!data->map[*i])
-		return (1);
-	j = 0;
-	while (j < data->columns)
-	{
-		if (line[j] == '0' || line[j] == '1' || line[j] == 'C'
-			|| line[j] == 'E' || line[j] == 'P')
-		{
-			data->map[*i][j] = line[j];
-			if (line[j] == 'P')
-			{
-				data->player_row = *i;
-				data->player_col = j;
-			}
-		}
-		else
-			return (1);
-		j++;
-	}
-	return (0);
-}
-
 static int	read_map(t_data *data, char **argv)
 {
 	int		fd;
-	int		i;
 	char	*line;
+	char	*temp;
 
-	line = NULL;
+	data->pre_map = ft_strdup("");
+	if (!data->pre_map)
+		return (free_data(data), check_error('M'), 0);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		return (free_map(line, &fd), check_error('O'), 0);
-	data->map = malloc(sizeof(char *) * data->rows);
-	if (!data->map)
-		return (free_map(line, &fd), 1);
-	i = 0;
-	while (true)
+		return (free(data->pre_map), free_data(data), check_error('O'), 0);
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
+		temp = ft_strjoin(data->pre_map, line);
+		free(data->pre_map);
+		data->pre_map = temp;
+		free(line);
 		line = get_next_line(fd);
-		if (!line)
-			break ;
-		if (assign_to_map(data, line, &i))
-			return (free_map(line, &fd), 1);
-		i++;
 	}
-	return (close(fd), free(line), 0);
+	data->map = ft_split(data->pre_map, '\n');
+	close(fd);
+	return (0);
 }
 
 void	init_map(t_data *data, char **argv)
 {
 	if (read_map(data, argv))
 	{
-		check_error('I');
 		if (data)
-			free(data);
+			free_data(data);
+		check_error('I');
 	}
 	if (check_map_walls(data))
 	{
-		check_error('W');
 		if (data)
 			free(data);
+		check_error('W');
 	}
 }

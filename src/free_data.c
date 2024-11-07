@@ -16,22 +16,23 @@ void	free_data(t_data *data)
 {
 	int	i;
 
+	if (!data)
+		return ;
+	if (data->pre_map)
+		free(data->pre_map);
 	if (data->map)
 	{
 		i = 0;
 		while (i < data->rows)
 		{
 			if (data->map[i])
-				free(data->map[i++]);
+				free(data->map[i]);
+			i++;
 		}
 		free(data->map);
-		data->map = NULL;
 	}
 	if (data->img)
-	{
 		mlx_delete_image(data->mlx_ptr, data->img);
-		data->img = NULL;
-	}
 	if (data->mlx_ptr)
 	{
 		mlx_terminate(data->mlx_ptr);
@@ -60,5 +61,9 @@ void	check_error(char c)
 		perror("Opening file\n");
 	else if (c == 'I')
 		perror("Initialising map\n");
+	else if (c == 'w')
+		perror("Initialising window\n");
+	else if (c == 'r')
+		perror("Rendering background\n");
 	exit(1);
 }

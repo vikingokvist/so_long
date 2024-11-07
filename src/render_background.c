@@ -45,7 +45,7 @@ static mlx_image_t	*get_image(t_data *data, char c)
 	return (image);
 }
 
-int	render_background(t_data *data)
+void	render_background(t_data *data)
 {
 	int			x;
 	int			y;
@@ -59,11 +59,13 @@ int	render_background(t_data *data)
 		{
 			image = get_image(data, data->map[y][x]);
 			if (!image)
-				return (free_data(data), 1);
-			mlx_image_to_window(data->mlx_ptr, image, (x * 64) + 1, y * 64);
+			{
+				free_data(data);
+				check_error('r');
+			}
+			mlx_image_to_window(data->mlx_ptr, image, (x * 64), y * 64);
 			x++;
 		}
 		y++;
 	}
-	return (0);
 }

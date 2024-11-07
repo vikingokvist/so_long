@@ -21,8 +21,13 @@ char	*get_next_line(int fd)
 		return (NULL);
 	total_chars = ft_read_line(fd, total_chars);
 	if (total_chars == NULL)
-		return (NULL);
+		return (free(total_chars), NULL);
 	line = ft_save_line(total_chars);
 	total_chars = ft_save_static(total_chars);
+	if (!total_chars || *total_chars == '\0')
+	{
+		free(total_chars);
+		total_chars = NULL;
+	}
 	return (line);
 }

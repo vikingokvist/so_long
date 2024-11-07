@@ -26,6 +26,7 @@ typedef struct s_data
 	int			window_h;
 	int			image_w;
 	int			image_h;
+	char		*pre_map;
 	char		**map;
 	int			rows;
 	int			columns;
@@ -35,8 +36,8 @@ typedef struct s_data
 }	t_data;
 
 int		main(int argc, char **argv);
-int		init_window(t_data *data);
-int		render_background(t_data *data);
+void		init_window(t_data *data);
+void		render_background(t_data *data);
 void	check_valid_map(t_data *data, char **argv);
 void	init_map(t_data *data, char **argv);
 void	free_map(char *line, int *fd);

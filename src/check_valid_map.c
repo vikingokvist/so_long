@@ -58,12 +58,12 @@ static int	check_map_rectangle(t_data *data, char **argv)
 			data->columns = ft_strlen(*array);
 		free_all(array);
 		if (i != 0 && check_len(data, line))
-			return (free_map(line, &fd), 1);
+			return (free(line), close(fd), 1);
 		free(line);
 		i++;
 	}
 	data->rows = i;
-	return (free_map(line, &fd), 0);
+	return (close(fd), 0);
 }
 
 static int	check_ber_file(char **argv)
@@ -88,16 +88,14 @@ void	check_valid_map(t_data *data, char **argv)
 {
 	if (check_ber_file(argv))
 	{
-		check_error('B');
 		if (data)
 			free_data(data);
-		
+		check_error('B');
 	}
 	else if (check_map_rectangle(data, argv))
 	{
-		check_error('R');
 		if (data)
 			free_data(data);
-		
+		check_error('R');
 	}
 }
