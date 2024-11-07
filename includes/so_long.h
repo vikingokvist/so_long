@@ -30,9 +30,11 @@ typedef struct s_data
 	char		**map;
 	int			rows;
 	int			columns;
-	char		**player_pos;
-	int			player_row;
-	int			player_col;
+	char		**p_pos;
+	int			p_row;
+	int			p_col;
+	mlx_image_t		*p_image;
+	int			moves;
 }	t_data;
 
 int		main(int argc, char **argv);
@@ -40,6 +42,8 @@ void		init_window(t_data *data);
 void		render_background(t_data *data);
 void	check_valid_map(t_data *data, char **argv);
 void	init_map(t_data *data, char **argv);
+void	render_player(t_data *data);
+int	render_to_window(t_data *data, int p_row, int p_col);
 void	free_map(char *line, int *fd);
 void	free_data(t_data *data);
 void	check_error(char c);

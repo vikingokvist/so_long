@@ -26,7 +26,7 @@ MINILIB = $(MINILIB_DIR)/libmlx42.a -ldl -lglfw -pthread -lm
 
 SRCS_SRC = src/main.c src/check_valid_map.c src/init_map.c src/init_window.c \
 	src/hook_and_loop.c src/keypress.c src/destroy.c src/free_data.c \
-	src/render_background.c \
+	src/render_background.c src/render_player.c \
 	
 
 OBJS_SRC = $(SRCS_SRC:.c=.o)

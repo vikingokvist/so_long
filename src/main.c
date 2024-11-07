@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (1);
+	data.moves = 0;
 	check_valid_map(&data, argv);
 	init_map(&data, argv);
 	init_window(&data);

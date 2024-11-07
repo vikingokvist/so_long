@@ -14,6 +14,7 @@
 
 void	hook_and_loop(t_data *data)
 {
+	render_to_window(data, data->p_row, data->p_col);
 	mlx_key_hook(data->mlx_ptr, on_keypress, data);
 	mlx_loop(data->mlx_ptr);
 }
