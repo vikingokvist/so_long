@@ -35,18 +35,25 @@ typedef struct s_data
 	int			p_col;
 	mlx_image_t		*p_image;
 	int			moves;
+	int		**visited;
+	int			start_row;
+	int			start_col;
+	int			n_collectibles;
+	int			found_collectibles;
+	int			found_exit;
 }	t_data;
 
 int			main(int argc, char **argv);
 void	error(t_data *data, char c);
-void	free_fd(char *line, int *fd);
 void	free_data(t_data *data);
+void	free_fd(char *line, int *fd);
 void    init_struct(t_data *data);
 void	check_ber_file(t_data *data, char **argv);
 void	check_map_rectangle(t_data *data, char **argv);
 void	read_map(t_data *data, char **argv);
 void    check_walls(t_data *data);
 void    check_map_dupes(t_data *data);
+void	check_map_doable(t_data *data);
 void	init_window(t_data *data);
 void	render_background(t_data *data);
 void	get_player_pos(t_data *data);

@@ -12,14 +12,27 @@
 
 #include "../includes/so_long.h"
 
-void	free_data(t_data *data)
+static void	free_data3(t_data *data)
 {
 	int	i;
 
-	if (!data)
-		return ;
-	if (data->pre_map)
-		free(data->pre_map);
+	if (data->visited)
+	{
+		i = 0;
+		while (i < data->rows)
+		{
+			if (data->visited[i])
+				free(data->visited[i]);
+			i++;
+		}
+		free(data->visited);
+	}
+}
+
+static void	free_data2(t_data *data)
+{
+	int	i;
+
 	if (data->map)
 	{
 		i = 0;
@@ -42,6 +55,16 @@ void	free_data(t_data *data)
 		}
 		free(data->p_pos);
 	}
+}
+
+void	free_data(t_data *data)
+{
+	if (!data)
+		return ;
+	free_data2(data);
+	free_data3(data);
+	if (data->pre_map)
+		free(data->pre_map);
 	if (data->img)
 		mlx_delete_image(data->mlx_ptr, data->img);
 	if (data->p_image)
@@ -54,38 +77,39 @@ void	free_data(t_data *data)
 	exit(1);
 }
 
+void	error(t_data *data, char c)
+{
+	if (c == 'A')
+		perror("Error\nWrong amount of arguments.\nUsage: ./so_long *.ber");
+	else if (c == 'B')
+		perror("Error\nIncorrect .ber file extension.\n");
+	else if (c == 'D')
+		perror("Error\nIncorrect map dimensions.\n");
+	else if (c == 'W')
+		perror("Error\nMap not surrounded by walls.\n");
+	else if (c == 'O')
+		perror("Error\nOpening file.\n");
+	else if (c == 'M')
+		perror("Error\nMalloc.\n");
+	else if (c == 'I')
+		perror("Error\nInitialising map.\n");
+	else if (c == 'w')
+		perror("Error\nInitialising window.\n");
+	else if (c == 'r')
+		perror("Error\nRendering background.\n");
+	else if (c == 'P')
+		perror("Error\nGetting player position.\n");
+	else if (c == 'd')
+		perror("Error\nMap must contain only 1 exit 1 start.\n");
+	else if (c == 'S')
+		perror("Error\nMap not doable.\n");
+	free_data(data);
+}
+
 void	free_fd(char *line, int *fd)
 {
 	if (line)
 		free(line);
 	if (fd && *fd >= 0)
 		close(*fd);
-}
-
-void	error(t_data *data, char c)
-{
-	perror("Error\n");
-	if (c == 'A')
-		perror("Wrong amount of arguments.\nUsage: ./so_long *.ber");
-	else if (c == 'B')
-		perror("Incorrect .ber file extension.\n");
-	else if (c == 'D')
-		perror("Incorrect map dimensions.\n");
-	else if (c == 'W')
-		perror("Map not surrounded by walls.\n");
-	else if (c == 'O')
-		perror("Opening file.\n");
-	else if (c == 'M')
-		perror("Malloc.\n");
-	else if (c == 'I')
-		perror("Initialising map.\n");
-	else if (c == 'w')
-		perror("Initialising window.\n");
-	else if (c == 'r')
-		perror("Rendering background.\n");
-	else if (c == 'P')
-		perror("Getting player position.\n");
-	else if (c == 'D')
-		perror("Map must contain only 1 exit 1 start.\n");
-	free_data(data);
 }

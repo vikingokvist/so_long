@@ -2,7 +2,7 @@
 
 void    init_struct(t_data *data)
 {
-    data->mlx_ptr = NULL;
+	data->mlx_ptr = NULL;
 	data->img = NULL;
 	data->window_name = "so_long";
 	data->window_w = 0;
@@ -18,4 +18,10 @@ void    init_struct(t_data *data)
 	data->p_col = 0;
 	data->p_image = NULL;
 	data->moves = 0;
+	data->visited = NULL;
+	data->n_collectibles = 0;
+	data->found_collectibles = 0;
+	data->found_exit = 0;
+	data->start_row = 0;
+	data->start_col = 0;
 }

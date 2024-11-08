@@ -6,7 +6,7 @@ void    check_walls(t_data *data)
 	int	j;
 
 	i = 0;
-	while (i < data->rows - 1)
+	while (i < data->rows)
 	{
 		if (i == 0 || i == data->rows - 1)
 		{

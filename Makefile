@@ -25,9 +25,9 @@ MINILIB_DIR = MLX42/build
 MINILIB = $(MINILIB_DIR)/libmlx42.a -ldl -lglfw -pthread -lm
 
 SRCS_SRC = src/main.c src/init_struct.c src/check_ber_file.c src/check_map_rectangle.c \
-	src/read_map.c src/init_window.c src/hook_and_loop.c src/keypress.c src/destroy.c src/free_data.c \
-	src/render_background.c src/render_player.c src/check_walls.c src/get_player_pos.c \
-	src/check_map_dupes.c \
+	src/read_map.c src/init_window.c src/hook_and_loop.c src/keypress.c src/destroy.c \
+	src/free_data.c src/render_background.c src/render_player.c src/check_walls.c \
+	src/get_player_pos.c src/check_map_dupes.c src/check_map_doable.c \
 	
 
 OBJS_SRC = $(SRCS_SRC:.c=.o)

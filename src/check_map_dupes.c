@@ -20,5 +20,5 @@ void    check_map_dupes(t_data *data)
         i++;
     }
     if (count != 2)
-        error(data, 'D');
+        error(data, 'd');
 }
