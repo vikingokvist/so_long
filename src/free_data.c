@@ -100,7 +100,7 @@ void	error(t_data *data, char c)
 	else if (c == 'P')
 		perror("Error\nGetting player position.\n");
 	else if (c == 'd')
-		perror("Error\nMap must contain only 1 exit 1 start.\n");
+		perror("Error\nMap needs 1 start/exit and at least 1 collectible.\n");
 	else if (c == 'S')
 		perror("Error\nMap not doable.\n");
 	free_data(data);

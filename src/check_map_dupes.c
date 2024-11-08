@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-void	check_map_dupe(t_data *data)
+void	check_map_dupes(t_data *data)
 {
 	int	i;
 	int	j;
@@ -33,6 +33,6 @@ void	check_map_dupe(t_data *data)
 		}
 		i++;
 	}
-	if (count != 2)
+	if (count != 2 || data->n_collectibles == 0)
 		error(data, 'd');
 }
