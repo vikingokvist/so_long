@@ -39,8 +39,7 @@ void	on_keypress(struct mlx_key_data keydata, void *param)
 	on_keypress2(keydata, param);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
-		free_data(data);
-		exit(0);
+		error(data, '!');
 	}
 	else if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS
 		&& data->map[data->p_row - 1][data->p_col] != '1')

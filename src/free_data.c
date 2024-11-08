@@ -66,14 +66,18 @@ void	free_data(t_data *data)
 	if (data->pre_map)
 		free(data->pre_map);
 	if (data->img)
+	{
 		mlx_delete_image(data->mlx_ptr, data->img);
+	}
 	if (data->p_image)
+	{
 		mlx_delete_image(data->mlx_ptr, data->p_image);
+	}
 	if (data->mlx_ptr)
 	{
 		mlx_terminate(data->mlx_ptr);
-		data->mlx_ptr = NULL;
 	}
+	init_struct(data);
 	exit(1);
 }
 

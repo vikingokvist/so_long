@@ -29,6 +29,6 @@ int	main(int argc, char **argv)
 	init_window(&data);
 	render_background(&data);
 	hook_and_loop(&data);
-	free_data(&data);
+	error(&data, '!');
 	return (0);
 }

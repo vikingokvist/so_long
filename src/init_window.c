@@ -20,5 +20,4 @@ void	init_window(t_data *data)
 			data->window_name, false);
 	if (!data->mlx_ptr)
 		error(data, 'w');
-	data->img = NULL;
 }
