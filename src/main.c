@@ -24,11 +24,11 @@ int	main(int argc, char **argv)
 	read_map(&data, argv);
 	check_walls(&data);
 	check_map_dupes(&data);
+	get_player_pos(&data);
 	check_map_doable(&data);
-	// init_window(&data);
-	// render_background(&data);
-	// get_player_pos(&data);
-	// hook_and_loop(&data);
-	// free_data(&data);
+	init_window(&data);
+	render_background(&data);
+	hook_and_loop(&data);
+	free_data(&data);
 	return (0);
 }

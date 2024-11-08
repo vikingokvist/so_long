@@ -14,9 +14,11 @@
 
 static int	is_valid_move(t_data *data, int s_row, int s_col)
 {
-	return (s_row >= 0 && s_row < data->rows && s_col >= 0
+	if (s_row > 0 && s_row < data->rows && s_col > 0
 		&& s_col < data->columns && data->map[s_row][s_col] != '1'
-		&& !data->visited[s_row][s_col]);
+		&& !data->visited[s_row][s_col])
+		return (1);
+	return (0);
 }
 
 static void	dfs(t_data *data, int s_row, int s_col)
@@ -28,10 +30,10 @@ static void	dfs(t_data *data, int s_row, int s_col)
 		data->found_collectibles++;
 	if (data->map[s_row][s_col] == 'E')
 		data->found_exit++;
-	dfs(data, s_row - 1, s_col);
 	dfs(data, s_row + 1, s_col);
-	dfs(data, s_row, s_col - 1);
+	dfs(data, s_row - 1, s_col);
 	dfs(data, s_row, s_col + 1);
+	dfs(data, s_row, s_col - 1);
 }
 
 void	check_map_doable(t_data *data)
@@ -47,8 +49,11 @@ void	check_map_doable(t_data *data)
 		data->visited[i] = ft_calloc(data->columns, sizeof(int));
 		i++;
 	}
+	data->start_row = data->p_row;
+	data->start_col = data->p_col;
 	dfs(data, data->start_row, data->start_col);
-	if (data->found_collectibles != data->n_collectibles && !data->found_exit)
+	if (data->found_collectibles != data->n_collectibles)
+		error(data, 'S');
+	if (!data->found_exit)
 		error(data, 'S');
 }
-

@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-void get_player_pos(t_data *data)
+void	get_player_pos(t_data *data)
 {
 	int	i;
 	int	j;
@@ -33,6 +33,4 @@ void get_player_pos(t_data *data)
 		}
 		i++;
 	}
-	render_player(data, data->p_row, data->p_col);
 }
-

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_struct.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ctommasi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/08 13:48:33 by ctommasi          #+#    #+#             */
+/*   Updated: 2024/11/08 13:48:35 by ctommasi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
-void    init_struct(t_data *data)
+void	init_struct(t_data *data)
 {
 	data->mlx_ptr = NULL;
 	data->img = NULL;

@@ -17,14 +17,14 @@ static void	on_keypress2(struct mlx_key_data keydata, void *param)
 	t_data	*data;
 
 	data = (t_data *)param;
-	if (keydata.key == MLX_KEY_A && data->map[data->p_row][data->p_col - 1] != '1'
-		&& keydata.action == MLX_PRESS)
+	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS
+		&& data->map[data->p_row][data->p_col - 1] != '1')
 	{
 		data->p_col -= 1;
 		data->moves++;
 	}
-	else if (keydata.key == MLX_KEY_D && data->map[data->p_row][data->p_col + 1] != '1'
-		&& keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS
+		&& data->map[data->p_row][data->p_col + 1] != '1')
 	{
 		data->p_col += 1;
 		data->moves++;
@@ -42,18 +42,18 @@ void	on_keypress(struct mlx_key_data keydata, void *param)
 		free_data(data);
 		exit(0);
 	}
-	else if (keydata.key == MLX_KEY_W && data->map[data->p_row - 1][data->p_col] != '1'
-		&& keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS
+		&& data->map[data->p_row - 1][data->p_col] != '1')
 	{
 		data->p_row -= 1;
 		data->moves++;
-	}	
-	else if (keydata.key == MLX_KEY_S && data->map[data->p_row + 1][data->p_col] != '1'
-		&& keydata.action == MLX_PRESS)
+	}
+	else if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS
+		&& data->map[data->p_row + 1][data->p_col] != '1')
 	{
 		data->p_row += 1;
 		data->moves++;
 	}
-	render_player(data, data->p_row, data->p_col);
 	ft_printf("MOVES = %d\n", data->moves);
+	render_player(data, data->p_row, data->p_col);
 }
