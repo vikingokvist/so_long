@@ -21,19 +21,19 @@ static void	on_keypress2(struct mlx_key_data keydata, void *param)
 		&& data->map[data->p_row - 1][data->p_col] != '1')
 	{
 		data->p_row -= 1;
-		data->moves++;
+		ft_printf("MOVES = %d\n", data->moves++);
 	}
 	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS
 		&& data->map[data->p_row][data->p_col - 1] != '1')
 	{
 		data->p_col -= 1;
-		data->moves++;
+		ft_printf("MOVES = %d\n", data->moves++);
 	}
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS
 		&& data->map[data->p_row][data->p_col + 1] != '1')
 	{
 		data->p_col += 1;
-		data->moves++;
+		ft_printf("MOVES = %d\n", data->moves++);
 	}
 }
 
@@ -47,18 +47,17 @@ void	on_keypress(struct mlx_key_data keydata, void *param)
 		&& data->map[data->p_row + 1][data->p_col] != '1')
 	{
 		data->p_row += 1;
-		data->moves++;
+		ft_printf("MOVES = %d\n", data->moves++);
 	}
-	if ((keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		|| (data->map[data->p_row][data->p_col] == 'E'
-		&& data->found_collectibles == data->n_collectibles))
-		error(data, '!');
 	if (data->map[data->p_row][data->p_col] == 'C')
 	{
 		data->map[data->p_row][data->p_col] = '0';
 		data->found_collectibles++;
 		render_background(data);
 	}
-	ft_printf("MOVES = %d\n", data->moves);
+	if ((keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		|| (data->map[data->p_row][data->p_col] == 'E'
+		&& data->found_collectibles == data->n_collectibles))
+		error(data, '!');
 	render_player(data, data->p_row, data->p_col);
 }
