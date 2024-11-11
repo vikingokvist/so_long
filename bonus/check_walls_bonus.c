@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_player.c                                    :+:      :+:    :+:   */
+/*   check_walls.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctommasi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 17:22:13 by ctommasi          #+#    #+#             */
-/*   Updated: 2024/11/05 17:22:16 by ctommasi         ###   ########.fr       */
+/*   Created: 2024/11/08 13:49:11 by ctommasi          #+#    #+#             */
+/*   Updated: 2024/11/08 13:49:12 by ctommasi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	get_player_pos(t_data *data)
+void	check_walls(t_data *data)
 {
 	int	i;
 	int	j;
@@ -20,18 +20,21 @@ void	get_player_pos(t_data *data)
 	i = 0;
 	while (i < data->rows)
 	{
-		j = 0;
-		while (j < data->columns)
+		if (i == 0 || i == data->rows - 1)
 		{
-			if (data->map[i][j] == 'P')
+			j = 0;
+			while (j < data->columns)
 			{
-				data->p_row_s = i;
-				data->p_col_s = j;
-				data->p_row = i;
-				data->p_col = j;
-				break ;
+				if (data->map[i][j] != '1')
+					return (error(data, 'W'));
+				j++;
 			}
-			j++;
+		}
+		else
+		{
+			if (data->map[i][0] != '1'
+				|| data->map[i][data->columns - 1] != '1')
+				return (error(data, 'W'));
 		}
 		i++;
 	}

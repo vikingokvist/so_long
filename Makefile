@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 NAME = so_long
+NAME_BONUS = so_long_bonus
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -28,9 +29,17 @@ SRCS_SRC = src/main.c src/init_struct.c src/check_ber_file.c src/check_map_recta
 	src/read_map.c src/init_window.c src/hook_and_loop.c src/keypress.c src/destroy.c \
 	src/free_data.c src/render_background.c src/render_player.c src/check_walls.c \
 	src/get_player_pos.c src/check_map_dupes.c src/check_map_doable.c \
-	
 
 OBJS_SRC = $(SRCS_SRC:.c=.o)
+
+SRCS_BONUS = bonus/main_bonus.c bonus/keypress_bonus.c bonus/hook_and_loop_bonus.c\
+	bonus/death_message_bonus.c bonus/render_background_bonus.c bonus/render_moves_bonus.c \
+	bonus/death_timer_bonus.c bonus/check_map_doable_bonus.c bonus/init_struct_bonus.c \
+	bonus/check_ber_file_bonus.c bonus/check_map_rectangle_bonus.c bonus/read_map_bonus.c \
+	bonus/init_window_bonus.c bonus/free_data_bonus.c bonus/render_player_bonus.c \
+	bonus/check_walls_bonus.c bonus/check_map_dupes_bonus.c bonus/get_player_pos_bonus.c \
+
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 ORANGE = \033[38;5;214m
 GREEN = \033[38;5;82m
@@ -50,12 +59,21 @@ $(NAME): $(OBJS_SRC) $(LIBFT)
 	@echo "$(ORANGE)Compiling $<...$(RESET)"
 	@$(CC) $(CFLAGS) $(MLX_FLAGS) -c $< -o $@
 
+bonus: $(NAME_BONUS)
+
+$(NAME_BONUS): $(OBJS_BONUS) $(LIBFT)
+	@echo "$(ORANGE)Linking Bonus...$(RESET)"
+	@$(CC) $(CFLAGS) $(OBJS_BONUS) $(MINILIB) $(LIBFT) -o $(NAME_BONUS) 
+	@echo "$(GREEN)Executable built: $(NAME_BONUS)$(RESET)"
+
 clean:
 	@$(RM) $(OBJS_SRC)
+	@$(RM) $(OBJS_BONUS)
 	@echo "$(GREEN)All object files removed.$(RESET)"
 
 fclean: clean
 	@$(RM) $(NAME)
+	@$(RM) $(NAME_BONUS)
 	@echo "$(GREEN)Executable removed.$(RESET)"
 
 #----------------------------------------------------------------------

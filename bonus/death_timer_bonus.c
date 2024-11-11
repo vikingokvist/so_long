@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_player.c                                    :+:      :+:    :+:   */
+/*   death_timer_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctommasi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 17:22:13 by ctommasi          #+#    #+#             */
-/*   Updated: 2024/11/05 17:22:16 by ctommasi         ###   ########.fr       */
+/*   Created: 2024/11/11 15:43:12 by ctommasi          #+#    #+#             */
+/*   Updated: 2024/11/11 15:43:14 by ctommasi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	get_player_pos(t_data *data)
+void	death_timer_call(void *param)
 {
-	int	i;
-	int	j;
+	t_data		*data;
+	uint64_t	current_time;
 
-	i = 0;
-	while (i < data->rows)
+	data = (t_data *)param;
+	if (data->show_death)
 	{
-		j = 0;
-		while (j < data->columns)
+		current_time = mlx_get_time();
+		if (data->death_timer - current_time >= 300)
 		{
-			if (data->map[i][j] == 'P')
-			{
-				data->p_row_s = i;
-				data->p_col_s = j;
-				data->p_row = i;
-				data->p_col = j;
-				break ;
-			}
-			j++;
+			sleep(1);
+			mlx_delete_image(data->mlx_ptr, data->death_img);
+			data->death_img = NULL;
+			data->show_death = false;
 		}
-		i++;
 	}
 }

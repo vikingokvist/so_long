@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_player.c                                    :+:      :+:    :+:   */
+/*   render_moves_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctommasi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 13:29:05 by ctommasi          #+#    #+#             */
-/*   Updated: 2024/11/11 13:29:07 by ctommasi         ###   ########.fr       */
+/*   Created: 2024/11/11 16:25:09 by ctommasi          #+#    #+#             */
+/*   Updated: 2024/11/11 16:25:10 by ctommasi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	render_player(t_data *data, int p_row, int p_col)
+void	render_moves(t_data *data)
 {
-	mlx_texture_t		*texture;
+	char			*moves;
+	mlx_texture_t	*texture;
 
-	mlx_delete_image(data->mlx_ptr, data->p_image);
-	texture = mlx_load_png("./textures/player.png");
+	moves = ft_itoa(data->moves);
+	texture = mlx_load_png("./textures/wall.png");
 	if (!texture)
-		return (error(data, 'P'));
-	data->p_image = mlx_texture_to_image(data->mlx_ptr, texture);
-	if (!data->p_image)
-		return (error(data, 'P'));
+		error(data, 'r');
+	data->moves_img = mlx_texture_to_image(data->mlx_ptr, texture);
 	mlx_delete_texture(texture);
-	mlx_image_to_window(data->mlx_ptr, data->p_image,
-		(p_col * 64), (p_row * 64));
+	if (!data->moves_img)
+		error(data, 'r');
+	mlx_image_to_window(data->mlx_ptr, data->moves_img, 0, 0);
+	mlx_put_string(data->mlx_ptr, "MOVES: ", 4, 8);
+	mlx_put_string(data->mlx_ptr, moves, 16, 32);
+	free(moves);
 }

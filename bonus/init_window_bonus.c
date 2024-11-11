@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_player.c                                    :+:      :+:    :+:   */
+/*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctommasi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 17:22:13 by ctommasi          #+#    #+#             */
-/*   Updated: 2024/11/05 17:22:16 by ctommasi         ###   ########.fr       */
+/*   Created: 2024/11/04 10:25:07 by ctommasi          #+#    #+#             */
+/*   Updated: 2024/11/04 10:25:09 by ctommasi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	get_player_pos(t_data *data)
+void	init_window(t_data *data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < data->rows)
-	{
-		j = 0;
-		while (j < data->columns)
-		{
-			if (data->map[i][j] == 'P')
-			{
-				data->p_row_s = i;
-				data->p_col_s = j;
-				data->p_row = i;
-				data->p_col = j;
-				break ;
-			}
-			j++;
-		}
-		i++;
-	}
+	data->window_w = data->columns * 64;
+	data->window_h = data->rows * 64;
+	data->mlx_ptr = mlx_init(data->window_w, data->window_h,
+			data->window_name, false);
+	if (!data->mlx_ptr)
+		error(data, 'w');
 }

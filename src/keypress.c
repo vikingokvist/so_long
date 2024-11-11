@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-static void	on_keypress2(struct mlx_key_data keydata, void *param)
+static void	on_keypress1(struct mlx_key_data keydata, void *param)
 {
 	t_data	*data;
 
@@ -42,7 +42,7 @@ void	on_keypress(struct mlx_key_data keydata, void *param)
 	t_data	*data;
 
 	data = (t_data *)param;
-	on_keypress2(keydata, param);
+	on_keypress1(keydata, param);
 	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS
 		&& data->map[data->p_row + 1][data->p_col] != '1')
 	{

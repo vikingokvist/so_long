@@ -16,6 +16,7 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/includes/libft.h"
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_data
 {
@@ -33,6 +34,8 @@ typedef struct s_data
 	char		**p_pos;
 	int			p_row;
 	int			p_col;
+	int			p_row_s;
+	int			p_col_s;
 	mlx_image_t	*p_image;
 	int			moves;
 	int			**visited;
@@ -41,6 +44,10 @@ typedef struct s_data
 	int			n_collectibles;
 	int			found_collectibles;
 	int			found_exit;
+	mlx_image_t	*death_img;
+	uint64_t	death_timer;
+	bool		show_death;
+	mlx_image_t	*moves_img;
 }	t_data;
 
 int		main(int argc, char **argv);
@@ -61,5 +68,15 @@ void	render_player(t_data *data, int p_row, int p_col);
 void	on_keypress(struct mlx_key_data keydata, void *param);
 void	hook_and_loop(t_data *data);
 void	on_destroy(void *data);
+
+//Bonus
+void	on_keypress_b(struct mlx_key_data keydata, void *param);
+void	hook_and_loop_b(t_data *data);
+void	render_enemy(t_data *data, int p_row, int p_col);
+void	render_background_b(t_data *data);
+void	death_message(t_data *data);
+void	death_timer_call(void *param);
+void	check_map_doable_b(t_data *data);
+void	render_moves(t_data *data);
 
 #endif

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_background.c                                :+:      :+:    :+:   */
+/*   render_background_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctommasi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,7 +17,7 @@ static mlx_texture_t	*get_texture(char c)
 	mlx_texture_t		*texture;
 
 	texture = NULL;
-	if (c == '0' || c == 'X')
+	if (c == '0')
 		texture = mlx_load_png("./textures/empty_space.png");
 	else if (c == '1')
 		texture = mlx_load_png("./textures/wall.png");
@@ -27,6 +27,8 @@ static mlx_texture_t	*get_texture(char c)
 		texture = mlx_load_png("./textures/map_exit.png");
 	else if (c == 'P')
 		texture = mlx_load_png("./textures/starting_pos.png");
+	else if (c == 'X')
+		texture = mlx_load_png("./textures/enemy.png");
 	return (texture);
 }
 
@@ -45,7 +47,7 @@ static mlx_image_t	*get_image(t_data *data, char c)
 	return (image);
 }
 
-void	render_background(t_data *data)
+void	render_background_b(t_data *data)
 {
 	int			x;
 	int			y;

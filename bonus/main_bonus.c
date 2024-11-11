@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_player.c                                    :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctommasi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 17:22:13 by ctommasi          #+#    #+#             */
-/*   Updated: 2024/11/05 17:22:16 by ctommasi         ###   ########.fr       */
+/*   Created: 2024/11/11 11:57:47 by ctommasi          #+#    #+#             */
+/*   Updated: 2024/11/11 11:57:48 by ctommasi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	get_player_pos(t_data *data)
+int	main(int argc, char **argv)
 {
-	int	i;
-	int	j;
+	t_data	data;
 
-	i = 0;
-	while (i < data->rows)
-	{
-		j = 0;
-		while (j < data->columns)
-		{
-			if (data->map[i][j] == 'P')
-			{
-				data->p_row_s = i;
-				data->p_col_s = j;
-				data->p_row = i;
-				data->p_col = j;
-				break ;
-			}
-			j++;
-		}
-		i++;
-	}
+	if (argc != 2)
+		error(&data, 'A');
+	init_struct(&data);
+	check_ber_file(&data, argv);
+	check_map_rectangle(&data, argv);
+	read_map(&data, argv);
+	check_walls(&data);
+	check_map_dupes(&data);
+	get_player_pos(&data);
+	check_map_doable_b(&data);
+	init_window(&data);
+	render_background_b(&data);
+	hook_and_loop_b(&data);
+	error(&data, '!');
+	return (0);
 }
