@@ -17,6 +17,7 @@
 # include "../libft/includes/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
+# include <math.h>
 
 typedef struct s_data
 {
