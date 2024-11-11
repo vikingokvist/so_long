@@ -56,4 +56,5 @@ void	check_map_doable(t_data *data)
 		error(data, 'S');
 	if (!data->found_exit)
 		error(data, 'S');
+	data->found_collectibles = 0;
 }
