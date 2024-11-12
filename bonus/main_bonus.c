@@ -26,9 +26,10 @@ int	main(int argc, char **argv)
 	check_map_dupes(&data);
 	get_player_pos(&data);
 	get_exit_pos(&data);
+	get_enemy_pos(&data);
 	check_map_doable_b(&data);
 	init_window(&data);
-	render_background_b(&data);
+	// render_background_b(&data);
 	hook_and_loop_b(&data);
 	error(&data, '!');
 	return (0);

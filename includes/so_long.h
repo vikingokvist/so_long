@@ -52,6 +52,9 @@ typedef struct s_data
 	int			e_row;
 	int			e_col;
 	bool		exit;
+	int		x_row;
+	int		x_col;
+	mlx_image_t	*x_image;
 }	t_data;
 
 int		main(int argc, char **argv);
@@ -76,17 +79,23 @@ void	on_destroy(void *data);
 //Bonus
 void	on_keypress_b(struct mlx_key_data keydata, void *param);
 void	hook_and_loop_b(t_data *data);
-void	render_enemy(t_data *data, int p_row, int p_col);
 void	render_background_b(t_data *data);
 void	death_message(t_data *data);
 void	death_timer_call(void *param);
 void	check_map_doable_b(t_data *data);
+void	get_exit_pos(t_data *data);
+
 void	render_moves(t_data *data);
 void	render_player_w(t_data *data, int p_row, int p_col);
 void	render_player_s(t_data *data, int p_row, int p_col);
 void	render_player_a(t_data *data, int p_row, int p_col);
 void	render_player_d(t_data *data, int p_row, int p_col);
 void	render_player_c(t_data *data, int p_row, int p_col);
-void	get_exit_pos(t_data *data);
+
+void	get_enemy_pos(t_data *data);
+void	enemy_movement(t_data *data, int start_stop);
+void	update_enemy_position(t_data *data, int x_row, int x_col);
+void	render_enemy(t_data *data, int p_row, int p_col);
+void	init_enemy_image(t_data *data, int p_row, int p_col);
 
 #endif

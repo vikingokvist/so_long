@@ -59,3 +59,26 @@ void	get_exit_pos(t_data *data)
 		i++;
 	}
 }
+
+void	get_enemy_pos(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < data->rows)
+	{
+		j = 0;
+		while (j < data->columns)
+		{
+			if (data->map[i][j] == 'X')
+			{
+				data->x_row = i;
+				data->x_col = j;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+}

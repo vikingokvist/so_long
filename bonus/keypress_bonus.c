@@ -12,7 +12,33 @@
 
 #include "../includes/so_long.h"
 
-static void	on_keypress_moves2(struct mlx_key_data keydata, void *param)
+static void	on_keypress_moves_c(t_data *data)
+{
+	if (data->found_collectibles == data->n_collectibles
+		&& data->exit == false)
+	{
+		data->map[data->e_row][data->e_col] = 'e';
+		data->exit = true;
+		render_background_b(data);
+		render_player_c(data, data->p_row, data->p_col);
+	}
+	if (data->map[data->p_row][data->p_col] == 'C')
+	{
+		data->map[data->p_row][data->p_col] = '0';
+		data->found_collectibles++;
+		render_background_b(data);
+		render_player_c(data, data->p_row, data->p_col);
+	}
+	if (data->map[data->p_row][data->p_col] == 'e'
+		&& data->found_collectibles == data->n_collectibles)
+	{
+		error(data, '!');
+	}
+			
+	
+}
+
+static void	on_keypress_moves_d_a(struct mlx_key_data keydata, void *param)
 {
 	t_data	*data;
 
@@ -33,7 +59,7 @@ static void	on_keypress_moves2(struct mlx_key_data keydata, void *param)
 	}
 }
 
-static void	on_keypress_moves1(struct mlx_key_data keydata, void *param)
+static void	on_keypress_moves_w_s(struct mlx_key_data keydata, void *param)
 {
 	t_data	*data;
 
@@ -52,7 +78,6 @@ static void	on_keypress_moves1(struct mlx_key_data keydata, void *param)
 		data->moves++;
 		render_player_s(data, data->p_row, data->p_col);
 	}
-	
 }
 
 void	on_keypress_b(struct mlx_key_data keydata, void *param)
@@ -60,31 +85,12 @@ void	on_keypress_b(struct mlx_key_data keydata, void *param)
 	t_data	*data;
 
 	data = (t_data *)param;
-	on_keypress_moves1(keydata, param);
-	on_keypress_moves2(keydata, param);
+	on_keypress_moves_d_a(keydata, param);
+	on_keypress_moves_w_s(keydata, param);
+	on_keypress_moves_c(data);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-	{
 		error(data, '!');
-	}
-	if (data->found_collectibles == data->n_collectibles
-		&& data->found_collectibles != data->n_collectibles
-		&& data->exit == false)
-	{
-		data->map[data->e_row][data->e_col] = 'e';
-		data->exit = true;
-		render_background_b(data);
-	}
-	if (data->map[data->p_row][data->p_col] == 'E'
-		&& data->found_collectibles == data->n_collectibles)
-			error(data, '!');
 	if (data->map[data->p_row][data->p_col] == 'X')
 		death_message(data);
-	if (data->map[data->p_row][data->p_col] == 'C')
-	{
-		data->map[data->p_row][data->p_col] = '0';
-		data->found_collectibles++;
-		render_background_b(data);
-		render_player_c(data, data->p_row, data->p_col);
-	}
 	render_moves(data);
 }
