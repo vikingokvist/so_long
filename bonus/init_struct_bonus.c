@@ -12,34 +12,45 @@
 
 #include "../includes/so_long.h"
 
-void	init_struct(t_data *data)
+static void	init_struct2(t_data *data)
 {
-	data->mlx_ptr = NULL;
-	data->img = NULL;
-	data->window_name = "so_long";
 	data->window_w = 0;
 	data->window_h = 0;
 	data->image_w = 0;
 	data->image_h = 0;
-	data->pre_map = NULL;
-	data->map = NULL;
-	data->rows = 0;
-	data->columns = 0;
-	data->p_pos = NULL;
 	data->p_row = 0;
 	data->p_col = 0;
-	data->p_image = NULL;
-	data->moves = 1;
-	data->visited = NULL;
+	data->rows = 0;
+	data->columns = 0;
+	data->e_col = 0;
+	data->e_row = 0;
+	data->p_row_s = 0;
+	data->p_col_s = 0;
+	data->moves = 0;
 	data->n_collectibles = 0;
 	data->found_collectibles = 0;
 	data->found_exit = 0;
 	data->start_row = 0;
 	data->start_col = 0;
-	data->death_img = NULL;
-	data->show_death = false;
 	data->death_timer = 0;
+	data->x_row = 0;
+	data->x_col = 0;
+}
+
+void	init_struct(t_data *data)
+{
+	init_struct2(data);
+	data->mlx_ptr = NULL;
+	data->img = NULL;
+	data->pre_map = NULL;
+	data->map = NULL;
+	data->p_pos = NULL;
+	data->p_image = NULL;
+	data->visited = NULL;
+	data->death_img = NULL;
+	data->moves_img = NULL;
+	data->x_image = NULL;
+	data->show_death = false;
 	data->exit = false;
-	data->e_col = 0;
-	data->e_row = 0;
+	data->window_name = "so_long";
 }

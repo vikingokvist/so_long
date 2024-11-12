@@ -29,7 +29,6 @@ int	main(int argc, char **argv)
 	get_enemy_pos(&data);
 	check_map_doable_b(&data);
 	init_window(&data);
-	// render_background_b(&data);
 	hook_and_loop_b(&data);
 	error(&data, '!');
 	return (0);

@@ -33,12 +33,11 @@ SRCS_SRC = src/main.c src/init_struct.c src/check_ber_file.c src/check_map_recta
 OBJS_SRC = $(SRCS_SRC:.c=.o)
 
 SRCS_BONUS = bonus/main_bonus.c bonus/keypress_bonus.c bonus/hook_and_loop_bonus.c\
-	bonus/death_message_bonus.c bonus/render_background_bonus.c bonus/render_moves_bonus.c \
-	bonus/death_timer_bonus.c bonus/check_map_doable_bonus.c bonus/init_struct_bonus.c \
-	bonus/check_ber_file_bonus.c bonus/check_map_rectangle_bonus.c bonus/read_map_bonus.c \
-	bonus/init_window_bonus.c bonus/free_data_bonus.c bonus/render_player_bonus.c \
-	bonus/check_walls_bonus.c bonus/check_map_dupes_bonus.c bonus/get_positions_bonus.c \
-	bonus/render_others_bonus.c bonus/enemy_movement_bonus.c
+	bonus/death_bonus.c bonus/render_background_bonus.c bonus/render_moves_bonus.c \
+	bonus/check_map_doable_bonus.c bonus/init_struct_bonus.c bonus/check_ber_file_bonus.c \
+	bonus/check_map_rectangle_bonus.c bonus/read_map_bonus.c bonus/init_window_bonus.c \
+	bonus/free_data_bonus.c bonus/render_player_bonus.c bonus/check_walls_bonus.c \
+	bonus/check_map_dupes_bonus.c bonus/get_positions_bonus.c \
 
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 

@@ -34,8 +34,6 @@ static void	on_keypress_moves_c(t_data *data)
 	{
 		error(data, '!');
 	}
-			
-	
 }
 
 static void	on_keypress_moves_d_a(struct mlx_key_data keydata, void *param)
@@ -89,8 +87,12 @@ void	on_keypress_b(struct mlx_key_data keydata, void *param)
 	on_keypress_moves_w_s(keydata, param);
 	on_keypress_moves_c(data);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	{
 		error(data, '!');
+	}
 	if (data->map[data->p_row][data->p_col] == 'X')
+	{
 		death_message(data);
+	}
 	render_moves(data);
 }

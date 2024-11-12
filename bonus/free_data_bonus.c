@@ -94,7 +94,7 @@ void	error(t_data *data, char c)
 	else if (c == 'w')
 		perror("Error\nInitialising window.\n");
 	else if (c == 'r')
-		perror("Error\nRendering background.\n");
+		perror("Error\nRendering.\n");
 	else if (c == 'P')
 		perror("Error\nGetting player position.\n");
 	else if (c == 'd')

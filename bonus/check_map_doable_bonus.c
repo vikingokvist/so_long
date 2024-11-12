@@ -16,7 +16,7 @@ static int	is_valid_move(t_data *data, int s_row, int s_col)
 {
 	if (s_row > 0 && s_row < data->rows && s_col > 0
 		&& s_col < data->columns && !data->visited[s_row][s_col]
-		&& (data->map[s_row][s_col] != '1'))
+		&& data->map[s_row][s_col] != '1' && data->map[s_row][s_col] != 'X')
 		return (1);
 	return (0);
 }
