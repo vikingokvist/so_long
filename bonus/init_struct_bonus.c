@@ -39,4 +39,7 @@ void	init_struct(t_data *data)
 	data->death_img = NULL;
 	data->show_death = false;
 	data->death_timer = 0;
+	data->exit = false;
+	data->e_col = 0;
+	data->e_row = 0;
 }

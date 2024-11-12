@@ -36,3 +36,26 @@ void	get_player_pos(t_data *data)
 		i++;
 	}
 }
+
+void	get_exit_pos(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < data->rows)
+	{
+		j = 0;
+		while (j < data->columns)
+		{
+			if (data->map[i][j] == 'E')
+			{
+				data->e_row = i;
+				data->e_col = j;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+}

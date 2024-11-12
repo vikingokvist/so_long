@@ -22,13 +22,13 @@ static mlx_texture_t	*get_texture(char c)
 	else if (c == '1')
 		texture = mlx_load_png("./textures/wall.png");
 	else if (c == 'C')
-		texture = mlx_load_png("./textures/collectible.png");
+		texture = mlx_load_png("./textures/collectible_ladder.png");
 	else if (c == 'E')
-		texture = mlx_load_png("./textures/map_exit.png");
+		texture = mlx_load_png("./textures/exit_0.png");
 	else if (c == 'P')
 		texture = mlx_load_png("./textures/starting_pos.png");
-	else if (c == 'X')
-		texture = mlx_load_png("./textures/enemy.png");
+	else if (c == 'e')
+		texture = mlx_load_png("./textures/exit_1.png");
 	return (texture);
 }
 

@@ -14,7 +14,7 @@
 
 void	hook_and_loop_b(t_data *data)
 {
-	render_player(data, data->p_row, data->p_col);
+	render_player_c(data, data->p_row, data->p_col);
 	mlx_loop_hook(data->mlx_ptr, death_timer_call, data);
 	mlx_key_hook(data->mlx_ptr, on_keypress_b, data);
 	mlx_loop(data->mlx_ptr);

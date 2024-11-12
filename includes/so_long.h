@@ -49,6 +49,9 @@ typedef struct s_data
 	uint64_t	death_timer;
 	bool		show_death;
 	mlx_image_t	*moves_img;
+	int			e_row;
+	int			e_col;
+	bool		exit;
 }	t_data;
 
 int		main(int argc, char **argv);
@@ -79,5 +82,11 @@ void	death_message(t_data *data);
 void	death_timer_call(void *param);
 void	check_map_doable_b(t_data *data);
 void	render_moves(t_data *data);
+void	render_player_w(t_data *data, int p_row, int p_col);
+void	render_player_s(t_data *data, int p_row, int p_col);
+void	render_player_a(t_data *data, int p_row, int p_col);
+void	render_player_d(t_data *data, int p_row, int p_col);
+void	render_player_c(t_data *data, int p_row, int p_col);
+void	get_exit_pos(t_data *data);
 
 #endif
