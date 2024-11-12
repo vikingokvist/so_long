@@ -24,7 +24,7 @@ static mlx_texture_t	*get_texture(char c)
 	else if (c == 'C')
 		texture = mlx_load_png("./textures/collectible.png");
 	else if (c == 'E')
-		texture = mlx_load_png("./textures/map_exit.png");
+		texture = mlx_load_png("./textures/exit_1.png");
 	else if (c == 'P')
 		texture = mlx_load_png("./textures/starting_pos.png");
 	return (texture);

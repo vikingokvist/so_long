@@ -22,7 +22,7 @@ static mlx_texture_t	*get_texture(char c)
 	else if (c == '1')
 		texture = mlx_load_png("./textures/wall.png");
 	else if (c == 'C')
-		texture = mlx_load_png("./textures/collectible_ladder.png");
+		texture = mlx_load_png("./textures/collectible.png");
 	else if (c == 'E')
 		texture = mlx_load_png("./textures/exit_0.png");
 	else if (c == 'P')
