@@ -23,11 +23,12 @@ void	death_timer_call(void *param)
 		current_time = mlx_get_time();
 		if (data->death_timer - current_time >= 300)
 		{
-			sleep(1);
 			mlx_delete_image(data->mlx_ptr, data->death_img);
 			data->death_img = NULL;
 			data->show_death = false;
-			render_player_d(data, data->p_row, data->p_col);
+			sleep(1);
+			data->p_row = data->p_row_s;
+			data->p_col = data->p_col_s;
 		}
 	}
 }
@@ -39,6 +40,8 @@ void	death_message(t_data *data)
 	float			height_scale;
 	float			scale_factor;
 
+	if (data->death_img)
+		mlx_delete_image(data->mlx_ptr, data->death_img);
 	width_scale = (data->window_w / 2) / (float)1266;
 	height_scale = (data->window_h / 4) / (float)86;
 	scale_factor = fmin(width_scale, height_scale);
@@ -52,6 +55,4 @@ void	death_message(t_data *data)
 	mlx_delete_texture(texture);
 	data->death_timer = mlx_get_time();
 	data->show_death = true;
-	data->p_row = data->p_row_s;
-	data->p_col = data->p_col_s;
 }

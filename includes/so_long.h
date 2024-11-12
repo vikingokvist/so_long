@@ -56,6 +56,7 @@ typedef struct s_data
 	int			x_col;
 	mlx_image_t	*x_image;
 	mlx_image_t	*p_img;
+	char			p_stance;
 }	t_data;
 
 int		main(int argc, char **argv);
@@ -85,17 +86,14 @@ void	death_timer_call(void *param);
 void	check_map_doable_b(t_data *data);
 void	get_exit_pos(t_data *data);
 void	render_moves(t_data *data);
-void	render_player_w(t_data *data, int p_row, int p_col);
-void	render_player_s(t_data *data, int p_row, int p_col);
-void	render_player_a(t_data *data, int p_row, int p_col);
-void	render_player_d(t_data *data, int p_row, int p_col);
-void	render_player_c(t_data *data, int p_row, int p_col);
 void	get_enemy_pos(t_data *data);
-void	player_movement(void *param);
-char	*get_image_a(int i);
-char	*get_image_w(int i);
-char	*get_image_d(int i);
-char	*get_image_s(int i);
+void    render_player_movement(void *param);
+char     *textures_w(int i);
+char     *textures_a(int i);
+char     *textures_s(int i);
+char     *textures_d(int i);
+// char     *textures_c(int i);
+// char     *textures_r(int i);
+// char     *textures_x(int i);
 
 #endif
-

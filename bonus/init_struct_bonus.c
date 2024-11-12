@@ -53,4 +53,5 @@ void	init_struct(t_data *data)
 	data->show_death = false;
 	data->exit = false;
 	data->window_name = "so_long";
+	data->p_stance = 'r';
 }
