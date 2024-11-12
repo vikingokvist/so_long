@@ -55,6 +55,7 @@ typedef struct s_data
 	int			x_row;
 	int			x_col;
 	mlx_image_t	*x_image;
+	mlx_image_t	*p_img;
 }	t_data;
 
 int		main(int argc, char **argv);
@@ -90,5 +91,11 @@ void	render_player_a(t_data *data, int p_row, int p_col);
 void	render_player_d(t_data *data, int p_row, int p_col);
 void	render_player_c(t_data *data, int p_row, int p_col);
 void	get_enemy_pos(t_data *data);
+void	player_movement(void *param);
+char	*get_image_a(int i);
+char	*get_image_w(int i);
+char	*get_image_d(int i);
+char	*get_image_s(int i);
 
 #endif
+
