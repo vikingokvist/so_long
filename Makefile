@@ -38,7 +38,7 @@ SRCS_BONUS = bonus/main_bonus.c bonus/keypress_bonus.c bonus/hook_and_loop_bonus
 	bonus/check_map_rectangle_bonus.c bonus/read_map_bonus.c bonus/init_window_bonus.c \
 	bonus/free_data_bonus.c bonus/check_walls_bonus.c \
 	bonus/check_map_dupes_bonus.c bonus/get_positions_bonus.c \
-	bonus/render_player_movement_bonus.c bonus/textures_bonus.c
+	bonus/render_player_movement_bonus.c bonus/textures_bonus.c bonus/textures2_bonus.c
 
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 

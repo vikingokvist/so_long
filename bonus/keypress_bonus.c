@@ -30,10 +30,9 @@ static void	on_keypress_moves_c(t_data *data)
 	}
 	if (data->map[data->p_row][data->p_col] == 'X')
 	{
-		// data->p_stance = 'x';
+		data->p_stance = 'x';
 		death_message(data);
 	}
-	
 }
 
 static void	on_keypress_moves_d_a(struct mlx_key_data keydata, void *param)
