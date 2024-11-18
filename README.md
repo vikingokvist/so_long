@@ -1,6 +1,8 @@
-# so_long
+# ./so_long
 
 This project involved creating a 2D game using the MinilibX library in pure C.
+
+![Screencastfrom2024-11-1820-16-19-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/8636f32e-2d50-4cf3-ac9b-0bbe4539af85)
 
 ## Rules
 
@@ -11,6 +13,7 @@ This project involved creating a 2D game using the MinilibX library in pure C.
 ## How It Works
 
 ### Main Part
+
 1. **Initialization**  
    A structure is initialized, setting all data to either `NULL` or `1`.  
 
@@ -38,7 +41,9 @@ This project involved creating a 2D game using the MinilibX library in pure C.
 7. **Error Handling**  
    - The `error()` function displays a specific message, cleans up all data, and safely exits.  
 
-### Bonus Part: Animations and Enemies
+## ./so_long_bonus
+#### Animations and Enemies
+
 - Enemies and animations are added for the bonus part of the project.  
 - Player animations trigger on movement or death.  
 - Enemies patrol the map and can reset the player position upon contact.  
