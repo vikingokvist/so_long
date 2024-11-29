@@ -19,19 +19,22 @@ static void	on_keypress_moves_c(t_data *data)
 	{
 		data->map[data->e_row][data->e_col] = 'e';
 		data->exit = true;
-		render_background_b(data);
+		render_single(data, 'e');
 	}
 	if (data->map[data->p_row][data->p_col] == 'C')
 	{
 		data->map[data->p_row][data->p_col] = '0';
 		data->found_collectibles++;
-		render_background_b(data);
+		render_single(data, 'c');
 		data->p_stance = 'c';
 	}
 	if (data->map[data->p_row][data->p_col] == 'X')
 	{
 		data->p_stance = 'x';
+		data->death_amount++;
 		death_message(data);
+		if (data->death_amount > 5)
+				error(data, '!');
 	}
 }
 

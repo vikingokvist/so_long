@@ -48,6 +48,7 @@ typedef struct s_data
 	char		p_stance;
 	char		*pre_map;
 	char		**map;
+	char		**map_cpy;
 	char		**p_pos;
 	mlx_image_t	*x_image;
 	mlx_image_t	*p_img;
@@ -57,6 +58,7 @@ typedef struct s_data
 	uint64_t	death_timer;
 	bool		show_death;
 	bool		exit;
+	int			death_amount;
 }	t_data;
 
 int		main(int argc, char **argv);
@@ -93,5 +95,6 @@ char	*textures_d(int i);
 char	*textures_c(int i);
 char	*textures_r(int i);
 char	*textures_x(int i);
+void	render_single(t_data *data, char c);
 
 #endif

@@ -70,3 +70,13 @@ void	render_background_b(t_data *data)
 		y++;
 	}
 }
+
+void	render_single(t_data *data, char c)
+{
+	if (c == 'c')
+		mlx_image_to_window(data->mlx_ptr, get_image(data, '0'), (data->p_col * 64), (data->p_row * 64));
+	if (c == 'e')
+		mlx_image_to_window(data->mlx_ptr, get_image(data, 'e'), (data->e_col * 64), (data->e_row * 64));
+	if (c == 'x')
+		mlx_image_to_window(data->mlx_ptr, get_image(data, '0'), (data->p_col * 64), (data->p_row * 64));
+}

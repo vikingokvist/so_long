@@ -44,6 +44,7 @@ void	init_struct(t_data *data)
 	data->img = NULL;
 	data->pre_map = NULL;
 	data->map = NULL;
+	data->map_cpy = NULL;
 	data->p_pos = NULL;
 	data->p_image = NULL;
 	data->visited = NULL;
@@ -54,4 +55,6 @@ void	init_struct(t_data *data)
 	data->exit = false;
 	data->window_name = "so_long";
 	data->p_stance = 'r';
+	data->death_amount = 0;
+	data->show_death = false;
 }

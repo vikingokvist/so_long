@@ -29,6 +29,7 @@ void	death_timer_call(void *param)
 			sleep(1);
 			data->p_row = data->p_row_s;
 			data->p_col = data->p_col_s;
+			data->p_stance = 'd';
 		}
 	}
 }
